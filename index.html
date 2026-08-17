@@ -136,8 +136,9 @@ strong{font-weight:600;color:var(--ink)}
 }
 .nav-cta:hover{transform:translateY(-1px)}
 .nav-cta .ico{width:15px;height:15px}
-.nav-cta span{display:none}
-@media(min-width:560px){.nav-cta span{display:inline}}
+.nav-cta .full{display:none}
+.nav-cta .short{display:inline}
+@media(min-width:560px){.nav-cta .full{display:inline}.nav-cta .short{display:none}}
 .sindex{display:none}
 @media(min-width:1120px){
   .sindex{position:fixed;right:22px;bottom:20px;z-index:70;display:flex;align-items:center;gap:9px;padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line-2);box-shadow:var(--sh);font-size:12.5px;color:var(--soft)}
@@ -1069,7 +1070,7 @@ svg, img, pre{max-width:100%}
     </div>
     <div class="nav-right">
       <a class="nav-cta" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">
-        <svg class="ico"><use href="#i-gift"/></svg><span>Платформа · 30 €</span>
+        <svg class="ico"><use href="#i-gift"/></svg><span class="full">Платформа · 30 €</span><span class="short">30 €</span>
       </a>
     </div>
   </nav>

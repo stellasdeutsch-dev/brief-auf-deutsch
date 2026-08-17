@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
-<meta name="description" content="Как написать письмо на немецком: конструктор письма, тренажёр ошибок, схема DIN 5008, три стиля и клише.">
-<title>Hallo Leute — письмо на немецком</title>
+<meta name="description" content="Платформа Stellas A0–C1: 310+ гайдов по немецкому, экзамены, упражнения с разбором. 30 € вместо 40, доступ навсегда.">
+<title>Hallo Leute — платформа Stellas A0–C1</title>
 <style>
 /* ============================================================
    Светлая тема, mobile-first.
@@ -947,6 +947,65 @@ svg, img, pre{max-width:100%}
   .drill-paper pre{font-size:11.5px}
 }
 
+
+/* ============ липкая панель покупки ============ */
+.sticky-buy{
+  position:fixed;left:0;right:0;bottom:0;z-index:88;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  transform:translateY(130%);transition:transform .45s var(--ease);
+  pointer-events:none;
+}
+.sticky-buy.on{transform:none}
+@media(min-width:1120px){.sticky-buy{display:none}}
+.sb-in{
+  pointer-events:auto;max-width:640px;margin:0 auto;
+  display:flex;align-items:center;gap:12px;
+  background:var(--night);color:var(--night-ink);
+  border-radius:999px;padding:9px 9px 9px 18px;
+  box-shadow:0 8px 30px -8px rgba(28,32,34,.5);
+}
+.sb-txt{flex:1;min-width:0;line-height:1.25}
+.sb-txt b{display:block;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-txt span{display:block;font-size:11.5px;color:rgba(246,244,240,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-price{font-size:19px;font-weight:400;color:var(--sand-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sb-price s{font-size:12.5px;color:rgba(246,244,240,.45);margin-right:6px}
+.sb-btn{
+  flex:none;text-decoration:none;background:linear-gradient(135deg,var(--sand-3),var(--sand-2));
+  color:#2A1E0C;font-size:14.5px;font-weight:600;padding:12px 20px;border-radius:999px;
+  transition:transform .25s var(--ease);
+}
+.sb-btn:hover{transform:translateY(-1px)}
+@media(max-width:400px){.sb-txt span{display:none}.sb-in{padding-left:15px;gap:9px}.sb-btn{padding:12px 16px}}
+
+/* ============ что входит ============ */
+.incl{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:9px}
+@media(min-width:560px){.incl{grid-template-columns:1fr 1fr;gap:9px 18px}}
+.incl li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font-size:14.5px;line-height:1.5;color:rgba(246,244,240,.86)}
+.incl .ico{width:16px;height:16px;color:var(--sand-2);margin-top:3px;stroke-width:2.4}
+.incl b{color:var(--night-ink);font-weight:600}
+
+/* ============ финальный оффер в подвале ============ */
+.close-offer{
+  margin-top:30px;border-radius:var(--r2);overflow:hidden;
+  background:linear-gradient(135deg,var(--sand-3),var(--sand-2));
+  padding:26px 20px;text-align:center;color:#2A1E0C;
+}
+@media(min-width:700px){.close-offer{margin-top:40px;padding:38px;border-radius:var(--r3)}}
+.close-offer h3{color:#2A1E0C;margin-bottom:10px}
+.close-offer p{margin:0 auto;max-width:52ch;font-size:16px;line-height:1.6;color:rgba(42,30,12,.8)}
+.close-offer .btn{margin-top:20px;background:var(--night);color:var(--night-ink)}
+.close-offer .btn:hover{background:#2A3033}
+.close-small{margin:14px 0 0;font-size:13.5px;color:rgba(42,30,12,.66)}
+.close-small a{color:#2A1E0C;font-weight:600}
+
+/* цена: чуть плотнее блок выгоды */
+.save-chip{
+  display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,130,.18);
+  border:1px solid var(--sand);color:var(--sand-2);border-radius:999px;
+  padding:7px 14px;font-size:13px;font-weight:600;margin-top:14px;
+}
+.save-chip .ico{width:14px;height:14px}
+
 </style>
 </head>
 <body>
@@ -1009,8 +1068,8 @@ svg, img, pre{max-width:100%}
       <a href="#platforma">Платформа</a>
     </div>
     <div class="nav-right">
-      <a class="nav-cta" href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">
-        <svg class="ico"><use href="#i-tg"/></svg><span>@stellasdeutsch</span>
+      <a class="nav-cta" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">
+        <svg class="ico"><use href="#i-gift"/></svg><span>Платформа · 30 €</span>
       </a>
     </div>
   </nav>
@@ -1052,8 +1111,8 @@ Katharina Müller</div>
         <p>Первое письмо в Ausländerbehörde я начал словами «Hallo Leute». Ответ пришёл через три недели: заявку не приняли. Не из-за грамматики — из-за первой строки.</p>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-sand mag" href="#anatomiya">Разобрать письмо <span class="arw">↗</span></a>
-        <a class="btn btn-line mag" href="#platforma">Платформа A0–C1</a>
+        <a class="btn btn-sand mag" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Забрать платформу — 30 € <span class="arw">↗</span></a>
+        <a class="btn btn-line mag" href="#anatomiya">Сначала разбор</a>
       </div>
     </div>
   </div>
@@ -1520,9 +1579,10 @@ Viele liebe Grüße</div>
         <p class="lbl" style="margin:0">Автор платформы</p>
         <h2 class="author-name">Stellas Deutsch</h2>
         <div class="author-pills">
-          <a class="apill" href="https://t.me/stellas_d" target="_blank" rel="noopener"><svg class="ico"><use href="#i-tg"/></svg>@stellas_d</a>
-          <a class="apill" href="https://t.me/stellasdeutsch" target="_blank" rel="noopener"><svg class="ico"><use href="#i-users"/></svg>100+ студентов</a>
-          <a class="apill-link" href="https://t.me/stellas_d" target="_blank" rel="noopener">Перейти в телеграм</a>
+          <span class="apill"><svg class="ico"><use href="#i-book"/></svg>310+ гайдов</span>
+          <span class="apill"><svg class="ico"><use href="#i-award"/></svg>A0 → C1</span>
+          <span class="apill"><svg class="ico"><use href="#i-users"/></svg>100+ студентов</span>
+          <a class="apill-link" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Открыть платформу</a>
         </div>
         <div class="hr-sand"></div>
         <p class="author-bio"><strong>Разговорные клубы немецкого для тех, кто уже живёт в Германии.</strong> Гайды под реальные ситуации: поход к врачу, звонок в страховую, разговор на кассе, письмо в Amt.</p>
@@ -1544,7 +1604,7 @@ Viele liebe Grüße</div>
   <div class="wrap">
     <div class="head-row">
       <h2>Платформа</h2>
-      <p class="meta"><b>310+ гайдов</b><br>от A0 до C1, доступ навсегда</p>
+      <p class="meta"><b>30 € за всё</b><br>310+ гайдов, доступ навсегда</p>
     </div>
 
     <div class="calc">
@@ -1568,7 +1628,7 @@ Viele liebe Grüße</div>
       <div class="dark-card rise">
         <h3>Экзамены собраны отдельно</h3>
         <p>Goethe, telc, DTZ, ÖSD, TestDaF — по блоку на каждый сертификат, с разбором частей и пробными вариантами.</p>
-        <a class="btn btn-sand mag" href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">Спросить про экзамен <span class="arw">↗</span></a>
+        <a class="btn btn-sand mag" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Открыть блок экзаменов <span class="arw">↗</span></a>
       </div>
       <div class="strip">
         <div class="shot rise">
@@ -1648,11 +1708,19 @@ Viele liebe Grüße</div>
         <p class="price-lead">
           Две платформы: A0–A1–A2 для тех, кто с нуля, и B1–B2–C1 для тех, кто уже в теме. Берёшь обе — платишь 30 вместо 40.
         </p>
+        <ul class="incl">
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>310+ гайдов</b> от A0 до C1</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>2500+ слов</b> с озвучкой и транскрипцией</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>5 экзаменов:</b> Goethe, telc, DTZ, ÖSD, TestDaF</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>Упражнения</b> с разбором каждого ответа</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>Чат с ИИ</b> и версии гайдов в Gemini</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><b>Трекер</b> прогресса и работа офлайн</span></li>
+        </ul>
+        <span class="save-chip"><svg class="ico"><use href="#i-gift"/></svg>Экономия 10 € + A0–A2 на украинском в подарок</span>
         <div class="hero-cta">
-          <a class="btn btn-sand mag" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Получить доступ <span class="arw">↗</span></a>
-          <a class="btn btn-line mag" href="https://t.me/stellasdeutsch" target="_blank" rel="noopener" style="background:transparent;border-color:rgba(246,244,240,.3);color:#F6F4F0"><svg class="ico"><use href="#i-tg"/></svg>Спросить в личке</a>
+          <a class="btn btn-sand mag" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Забрать за 30 € <span class="arw">↗</span></a>
         </div>
-        <p class="price-note">Бонусом — платформа A0–A2 на украинском. Всем, кто уже купил, обновления приходят бесплатно.</p>
+        <p class="price-note">Доступ навсегда, все обновления бесплатно. Вопросы по оплате — <a href="https://t.me/stellasdeutsch" target="_blank" rel="noopener" style="color:rgba(246,244,240,.8)">@stellasdeutsch</a>.</p>
       </div>
       <div class="tiers">
         <div class="tier"><span><span class="t-name">A0 · A1 · A2</span><span class="t-sub">с нуля до уверенного базового</span></span><span class="t-price">20 €</span></div>
@@ -1664,19 +1732,32 @@ Viele liebe Grüße</div>
 </section>
 
 <!-- ===================== FOOTER ===================== -->
+
+<div class="sticky-buy" id="stickyBuy" aria-hidden="true">
+  <div class="sb-in">
+    <span class="sb-txt"><b>Платформа A0 → C1</b><span>310+ гайдов · доступ навсегда</span></span>
+    <span class="sb-price"><s>40 €</s>30 €</span>
+    <a class="sb-btn" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Забрать</a>
+  </div>
+</div>
+
 <footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <p class="lbl" style="margin:0 0 14px">Для тебя старались:</p>
         <div class="made">
-          <a class="made-card" href="https://t.me/stellas_d" target="_blank" rel="noopener">
+          <a class="made-card" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">
             <span class="made-av"><img src="data:image/png;base64,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" alt=""></span>
-            <span><b>Канал Stellas</b><span>разборы грамматики и лексики</span></span>
+            <span><b>Платформа A0–A2</b><span>с нуля до уверенного базового · 20 €</span></span>
           </a>
           <a class="made-card" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">
-            <span class="made-av"><svg class="ico"><use href="#i-grid"/></svg></span>
-            <span><b>Платформа A0–C1</b><span>310+ гайдов, экзамены, трекер</span></span>
+            <span class="made-av"><svg class="ico"><use href="#i-award"/></svg></span>
+            <span><b>Платформа B1–C1</b><span>экзамены, работа, жизнь в Германии · 20 €</span></span>
+          </a>
+          <a class="made-card" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">
+            <span class="made-av"><svg class="ico"><use href="#i-gift"/></svg></span>
+            <span><b>Обе вместе — 30 €</b><span>вместо 40, доступ навсегда</span></span>
           </a>
         </div>
       </div>
@@ -1686,17 +1767,21 @@ Viele liebe Grüße</div>
       </div>
     </div>
 
-    <div class="foot-banner">
-      Готовы разобрать <b>любую тему немецкого</b> так же подробно, без воды и без выгорания. <b>Просто напиши нам</b> в телеграм
+    <div class="close-offer">
+      <h3>Весь немецкий разобран так же</h3>
+      <p>Этот разбор — один гайд. На платформе их <b>310+</b>, от A0 до C1: грамматика, лексика по ситуациям, экзамены, упражнения с ответами и практика с ИИ.</p>
+      <a class="btn mag" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Забрать платформу за 30 € <span class="arw">↗</span></a>
+      <p class="close-small">Доступ навсегда · обновления бесплатно · вопросы — <a href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">@stellasdeutsch</a></p>
     </div>
 
     <div class="contacts">
-      <span class="lbl">Контакты для связи</span>
-      <p class="crow"><b>Stellas Deutsch</b> (платформа, гайды) —
-        <a href="https://t.me/stellas_d" target="_blank" rel="noopener">КАНАЛ</a><span class="sep">|</span><a href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">ПЛАТФОРМА</a>
+      <span class="lbl">Где забрать</span>
+      <p class="crow"><b>Платформа Stellas A0 → C1</b> — 30 € вместо 40, доступ навсегда —
+        <a href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">ОФОРМИТЬ ДОСТУП</a>
       </p>
-      <p class="crow"><b>@stellasdeutsch</b> (вопросы, доступ) —
-        <a href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">TELEGRAM</a>
+      <p class="crow" style="font-size:14.5px">Вопросы по оплате и доступу —
+        <a href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">@stellasdeutsch</a><span class="sep">·</span>бесплатные разборы —
+        <a href="https://t.me/stellas_d" target="_blank" rel="noopener">канал</a>
       </p>
     </div>
 

@@ -903,6 +903,50 @@ td code{font-family:var(--mono);font-size:13px;color:var(--ink)}
 }
 .drill-reset:hover{background:rgba(42,30,12,.08)}
 
+/* ============ фикс горизонтального переполнения ============
+   У grid/flex-детей по умолчанию min-width:auto — длинная
+   моноширинная строка раздувает колонку и обрезает соседей. ============ */
+.reasons > *, .obj-top > *, .obj-row > *, .zone-split > *, .builder > *,
+.drill > *, .calc > *, .strip-wrap > *, .author-card > *, .hero-rule > *,
+.cap > *, .step-top > *, .mx > *, .made-card > *, .tier > *,
+.bline > *, .legend li > *, .find > *, .head-row > *{min-width:0}
+
+/* перенос длинных немецких слов в моноширинных блоках */
+.paper pre, .drill-paper pre, .annot, .bline .bv, .phrase .de,
+.box, .row-v, .step code, .tile-wm, .hero-wm{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.paper pre, .drill-paper pre, .annot{max-width:100%}
+
+/* переключатель стиля: на узком — отдельной строкой и с прокруткой */
+.obj-pin{display:flex;margin-bottom:8px}
+.switch{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.switch button{flex:0 0 auto}
+
+/* миниатюры частей письма не должны распирать колонку */
+.thumbs{max-width:100%;scrollbar-width:thin}
+.thumb{min-width:74px}
+
+/* якорные переходы не должны прятать заголовок под плавающей шапкой */
+section[id]{scroll-margin-top:74px}
+@media(min-width:700px){section[id]{scroll-margin-top:96px}}
+
+/* ничто не выходит за край на самых узких экранах */
+.wrap, .obj, .bctrl, .bout, .diagram, .grid-card, .trap-card,
+.drill-paper, .calc-right, .sheetblock, .price, .author-card{max-width:100%}
+svg, img, pre{max-width:100%}
+
+@media(max-width:420px){
+  .cap{gap:11px;padding:8px 14px 8px 8px}
+  .cap-num{min-width:74px;height:54px;font-size:17px;padding:0 11px}
+  .cap-num .ico{display:none}
+  .obj-title h3{font-size:21px}
+  .bline .bv{font-size:11.5px}
+  .paper pre{font-size:10.5px}
+  .drill-paper pre{font-size:11.5px}
+}
+
 </style>
 </head>
 <body>

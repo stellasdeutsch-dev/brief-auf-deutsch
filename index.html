@@ -950,12 +950,12 @@ svg, img, pre{max-width:100%}
 
 /* ============ липкая панель покупки ============ */
 .sticky-buy{
-  position:fixed;left:0;right:0;bottom:0;z-index:88;
+  position:fixed;left:0;right:0;bottom:-140px;z-index:88;
   padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  transform:translateY(130%);transition:transform .45s var(--ease);
-  pointer-events:none;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:bottom .45s var(--ease),opacity .3s ease,visibility 0s linear .45s;
 }
-.sticky-buy.on{transform:none}
+.sticky-buy.on{bottom:0;opacity:1;visibility:visible;transition:bottom .45s var(--ease),opacity .3s ease,visibility 0s}
 @media(min-width:1120px){.sticky-buy{display:none}}
 .sb-in{
   pointer-events:auto;max-width:640px;margin:0 auto;

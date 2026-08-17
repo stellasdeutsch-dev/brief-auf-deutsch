@@ -2344,28 +2344,39 @@ if(!reduce && window.matchMedia("(pointer:fine)").matches){
 })();
 
 
-/* ================= липкая панель покупки ================= */
+/* ================= липкая панель покупки =================
+   На IntersectionObserver, а не на scroll+rAF: обработчик
+   срабатывает от самого браузера и не зависит от кадров. */
 (function(){
   var bar = document.getElementById("stickyBuy");
-  if(!bar) return;
-  var hero = document.getElementById("hero");
-  var t = false;
-  function onScreen(el){
-    if(!el) return false;
-    var r = el.getBoundingClientRect();
-    return r.top < window.innerHeight && r.bottom > 0;
+  if(!bar || !("IntersectionObserver" in window)) return;
+  var hero  = document.getElementById("hero");
+  var price = document.querySelector(".price");
+  var close = document.querySelector(".close-offer");
+  var heroVisible = true, offerVisible = false;
+  function apply(){
+    var show = !heroVisible && !offerVisible;
+    bar.classList.toggle("on", show);
+    bar.setAttribute("aria-hidden", String(!show));
   }
-  function upd(){
-    var past = hero ? (hero.getBoundingClientRect().bottom < 0) : (window.scrollY > 500);
-    // прячем, когда блок с ценой или финальный оффер уже на экране
-    var visible = past && !onScreen(document.querySelector(".price")) && !onScreen(document.querySelector(".close-offer"));
-    bar.classList.toggle("on", visible);
-    bar.setAttribute("aria-hidden", String(!visible));
-    t = false;
+  if(hero){
+    new IntersectionObserver(function(es){
+      heroVisible = es[0].isIntersecting;
+      apply();
+    }, {threshold:0}).observe(hero);
+  } else heroVisible = false;
+
+  var offers = [price, close].filter(Boolean);
+  if(offers.length){
+    var seen = new WeakMap();
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ seen.set(e.target, e.isIntersecting); });
+      offerVisible = offers.some(function(el){ return seen.get(el) === true; });
+      apply();
+    }, {threshold:0});
+    offers.forEach(function(el){ io.observe(el); });
   }
-  window.addEventListener("scroll", function(){ if(!t){ t = true; requestAnimationFrame(upd); } }, {passive:true});
-  window.addEventListener("resize", function(){ if(!t){ t = true; requestAnimationFrame(upd); } }, {passive:true});
-  upd();
+  apply();
 })();
 
 </script>

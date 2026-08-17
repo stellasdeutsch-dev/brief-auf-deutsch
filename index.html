@@ -2343,6 +2343,31 @@ if(!reduce && window.matchMedia("(pointer:fine)").matches){
   render(); renderFinds();
 })();
 
+
+/* ================= липкая панель покупки ================= */
+(function(){
+  var bar = document.getElementById("stickyBuy");
+  if(!bar) return;
+  var hero = document.getElementById("hero");
+  var t = false;
+  function onScreen(el){
+    if(!el) return false;
+    var r = el.getBoundingClientRect();
+    return r.top < window.innerHeight && r.bottom > 0;
+  }
+  function upd(){
+    var past = hero ? (hero.getBoundingClientRect().bottom < 0) : (window.scrollY > 500);
+    // прячем, когда блок с ценой или финальный оффер уже на экране
+    var visible = past && !onScreen(document.querySelector(".price")) && !onScreen(document.querySelector(".close-offer"));
+    bar.classList.toggle("on", visible);
+    bar.setAttribute("aria-hidden", String(!visible));
+    t = false;
+  }
+  window.addEventListener("scroll", function(){ if(!t){ t = true; requestAnimationFrame(upd); } }, {passive:true});
+  window.addEventListener("resize", function(){ if(!t){ t = true; requestAnimationFrame(upd); } }, {passive:true});
+  upd();
+})();
+
 </script>
 
 </body>
